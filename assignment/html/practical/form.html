@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        label{
+            margin: right 10px;
+        }
+        td{
+            padding: 20px;
+        }
+        input{
+            padding: 7px;
+        }
+        table {
+            border: 2px solid#000;
+            background-color: rgb(219, 216, 216);
+        }
+    </style>
+</head>
+<body>
+    <table align="center" >
+        <form action="">
+
+    <tr>
+            <td>
+                <label for="">First Name</label>
+            </td>
+
+            <td>
+                <input type="text"id=""
+                placeholder="First Name"
+               pattern="[A-za-z]{1,20}"required>
+            </td>
+
+            <td>
+                <label for="">Middle Name</label>
+            </td>
+
+            <td>
+                <input type="text"placeholder="Middle name" pattern="[A-za-z]{1,20}" required>
+            </td>
+                        
+            <td>
+                <label for="">Last name</label>
+            </td>
+            <td>
+                <input type="text"placeholder="Last name"padding="[A-za-z]{1s,20}">
+            </td>
+    </tr>
+    
+            <tr>
+            
+                   <td> <label for="">Email</label></td>
+                    <td><input type="email"
+                    placeholder="Enter Your E-mail"
+                        required
+                     pattern="[a-z0-9.%+-]+@[a-z]+\.[a-z]{2,}$"></td>
+                
+            </tr>
+    
+            <tr>
+                <td><label for="">phone Numbers</label></td>
+                <td><input type="tel"
+                    placeholder="Enter your Number"
+                    required 
+                    pattern="[6-9][0-9]{9}"></td>
+            </tr>
+<tr>
+    <td>
+        <label for="">Select Your Subject</label>
+    </td>
+       <td>
+         <select name="" id=""style="padding: 7px;">
+            <option value="">Select subject</option>
+            <option value="">Science</option>
+            <option value="">Hindi</option>
+            <option value="">B.A</option>
+            <option value="">English</option>
+            <option value="">Sanskrit</option>
+            <option value="">S.S</option>
+            <option value="">Econimic</option>
+            <option value="">Account</option>
+            <option value="">Computer</option>
+        </select>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <label for="address">Address</label>
+    </td>
+      <td>
+        <textarea name="" id="" placeholder="Enter Your Address"></textarea>
+    </td> 
+</tr>
+
+<tr>
+    <td colspan="2" align="center">
+        <input type="submit">
+    </td>
+</tr>
+
+        </form>
+    </table>
+</body>
+</html>
