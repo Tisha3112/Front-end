@@ -1,0 +1,237 @@
+html, body 
+{
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 992px) {
+     .form textarea {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form input,
+  .form textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+  }
+
+  .form td {
+    display: block;
+    width: 100%;
+  }
+
+  .form-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .main-header,
+  .navbar nav,
+  .card-section,
+  .meeting-cards,
+  .degree-section,
+  .university,
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+  }
+
+  .header-content,
+  .left-card,
+  .right-card,
+  .right-side-cards,
+  .degree,
+  .template,
+  .courses-card,
+  .university-content,
+  .right-img,
+  .form,
+  .left-footer {
+    width: 90% !important;
+    margin: 20px auto !important;
+  }
+
+  .right-card {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .popular-courses {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .form textarea {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .form input,
+  .form textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+  }
+
+  .form td {
+    display: block;
+    width: 100%;
+  }
+
+  .form-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .footer {
+    padding: 40px 10px;
+    gap: 20px;
+  }
+
+  .play-icon {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .header-content {
+    padding: 30px 15px;
+    gap: 10px;
+  }
+
+  .card {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .left-card ul li {
+    font-size: 14px;
+  }
+
+  .right-side-cards {
+    width: 100%;
+  }
+
+  .courses-card,
+  .content {
+    width: 90%;
+  }
+
+  .template {
+    padding: 20px;
+  }
+
+  .template h3 {
+    font-size: 16px;
+  }
+
+  .play-icon {
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .university-section h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .footer-info {
+    font-size: 14px;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .navbar ul {
+    gap: 20px;
+  }
+
+  .header-content {
+    padding: 70px 40px;
+  }
+
+  .card {
+    width: 70%;
+  }
+
+  .courses-card {
+    width: 45%;
+  }
+
+  .form input,
+  .form textarea {
+    padding: 12px;
+  }
+
+  .logo {
+    font-size: 26px;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  .card {
+    width: 60%;
+  }
+
+  .courses-card {
+    width: 40%;
+  }
+
+  .header-content {
+    padding: 80px 60px;
+  }
+
+  .form input,
+  .form textarea {
+    padding: 14px;
+  }
+}
+
+
+@media screen and (max-width: 1440px) {
+  .header-content {
+    padding: 90px 80px;
+  }
+
+  .courses-card {
+    width: 30%;
+  }
+}
