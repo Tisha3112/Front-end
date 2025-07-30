@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Webpage</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+
+      .navbar {
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        align-items: center;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .nav-links li a:hover {
+        text-decoration: underline;
+      }
+
+      .content {
+        display: flex;
+        padding: 2rem;
+        gap: 2rem;
+      }
+
+      .column {
+        flex: 1;
+        background-color: #f4f4f4;
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+
+      footer {
+        text-align: center;
+        background-color: #222;
+        color: white;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+
+      @media screen and (max-width: 768px) 
+      {
+        .content {
+          flex-direction: column;
+        }
+
+        .navbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          width: 100%;
+          padding-top: 1rem;
+        }
+
+        .nav-links li {
+          padding: 0.5rem 0;
+        }
+
+        body {
+          font-size: 16px;
+          padding: 0 1rem;
+        }
+
+        .column {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">MySite</h1>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="content">
+      <section class="column left">
+        <h2>Left Column</h2>
+        <p>
+          This is the left side of the content area. It contains some text for
+          display.
+        </p>
+      </section>
+      <section class="column right">
+        <h2>Right Column</h2>
+        <p>
+          This is the right side of the content area. It also contains some
+          sample text.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 MySite. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

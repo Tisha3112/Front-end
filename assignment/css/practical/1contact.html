@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 Form</title>
+    <style>
+      label {
+        margin: right 10px;
+      }
+      td {
+        padding: 20px;
+      }
+      input {
+        padding: 7px;
+      }
+      table {
+        border: 2px solid#000;
+        background-color: rgb(221, 178, 178);
+      }
+
+      .submit {
+        background-color: #000;
+        border: none;
+        padding: 12px 45px;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      .submit:hover {
+        background-color: cadetblue;
+      }
+    </style>
+  </head>
+  <body>
+    <table align="center">
+      <form action="">
+        <caption>
+          <h1>Contact form</h1>
+        </caption>
+        <tr>
+          <td>
+            <label for="">First Name</label>
+          </td>
+
+          <td>
+            <input
+              type="text"
+              id=""
+              placeholder="First Name"
+              pattern="[A-za-z]{1,20}"
+              required
+            />
+          </td>
+
+          <td>
+            <label for="">Last Name</label>
+          </td>
+          <td>
+            <input
+              type="text"
+              placeholder="Last name"
+              padding="[A-za-z]{1s,20}"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="">Email</label></td>
+          <td>
+            <input
+              type="email"
+              placeholder="Enter Your E-mail"
+              required
+              pattern="[a-z0-9.%+-]+@[a-z]+\.[a-z]{2,}$"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="">Phone Numbers</label></td>
+          <td>
+            <input
+              type="tel"
+              placeholder="Enter your Number"
+              required
+              pattern="[6-9][0-9]{9}"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <label for="address">Address</label>
+          </td>
+          <td>
+            <textarea name="" id="" placeholder="Enter Your Address"></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="6" align="center">
+            <input type="submit" class="submit" />
+          </td>
+        </tr>
+      </form>
+    </table>
+  </body>
+</html>
