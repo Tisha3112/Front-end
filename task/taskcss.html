@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS</title>
+    <style>
+       {
+           box-sizing: border-box;
+           padding: 0;
+           margin: 0:
+       }
+      .btn{
+       transition: transform 5s ease-in-out;
+      }
+
+      button{
+       color: #fff;
+       font-size: 22px;
+       font-weight: 600;
+       letter-spacing: 0.2vw;
+       display:block;
+       background-color: aqua;
+       border:none;
+       padding: 12px 35px;
+       margin: 100px auto;
+       cursor: pointer;
+             }
+      .btn-effect{
+       background: none;
+       border: 4px solid rgb(118, 235, 235);
+       margin: auto;
+       width: 200px;
+       height: 80px;
+       transform: scale(0);
+       transition: 1s ease;
+      }
+
+      .btn:hover .btn-effect{
+       transform: scale(1);
+       transform:translateY(-160px);
+      }
+
+      .main{
+       height: 250px;
+       width: 500px;
+       margin: 0 50px;
+       overflow: hidden;
+       transition: 1s ease-in-out;
+      }
+      .img{
+      
+        background-image: url(https://images.pexels.com/photos/6461325/pexels-photo-6461325.jpeg?_gl=1*grlqzg*_ga*MjIxMjM1OTA3LjE3NTAxNjQxODA.*_ga_8JE65Q40S6*czE3NTE1MzI3NjQkbzQkZzEkdDE3NTE1MzQ5NTgkajU5JGwwJGgw);
+
+        background-size: 100% 100%;  
+    }
+
+    h2::first-letter{
+        color: red;
+    }
+
+    h2{
+        color: #fff;
+        text-align: right;
+        padding: 95px 25px;
+        letter-spacing: 0.svw;
+    }
+    .img-effect{
+        width: 480px;
+        height: 240px;
+        background-color: rgba(0,0,0,0.4);
+        transform: translateY(25%);
+    }
+    .border{
+        width: 450px;
+        height: 220px;
+        border: 4px solid #fff;
+
+    }
+    .main:hover .img-effect{
+        transform: translate(10px, -212px);
+    }
+    .main:hover.border{
+        transform: translate(20px,-200%);
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="btn">
+      <button>button</button>
+      <div class="btn-effect"></div>
+    </div>
+
+    <div class="main">
+      <div class="img">
+        <h2>Fall ahed</h2>
+       
+        <div class="img-effect"></div>
+        <div class="border"></div>
+      </div>
+    </div>
+  </body>
+</html>

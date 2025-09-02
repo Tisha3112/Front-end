@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edu Meeting</title>
+  <style>
+    /* Layout follows HTML5 Box Model using Flexbox */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* Header and Navigation */
+.header {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+  background-color: #005b96;
+  color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.btn {
+  background-color: #ff3333;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+/* Feature Boxes */
+.features {
+  display: flex;
+  gap: 20px;
+  padding: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.feature-box {
+  flex: 1 1 200px;
+  background-color: #e53935;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* Contact Form */
+.contact {
+  padding: 40px 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.contact button {
+  background-color: #ff3333;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Footer */
+.footer {
+  background-color: #1c1c1c;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .features {
+    flex-direction: column;
+  }
+
+  .nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+  </style>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER SECTION: Visible on all pages -->
+  <header class="header">
+    <h1>Edu Meeting</h1>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Meetings</a>
+      <a href="#">Courses</a>
+      <a href="#">Apply</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h2>Welcome to Education</h2>
+    <p>Empowering students for a brighter future</p>
+    <button class="btn">Join Us Now</button>
+  </section>
+
+  <!-- FEATURE BOXES using Flex -->
+  <section class="features">
+    <div class="feature-box">Best Education</div>
+    <div class="feature-box">Best Teachers</div>
+    <div class="feature-box">Best Students</div>
+  </section>
+
+  <!-- CONTACT FORM SECTION -->
+  <section class="contact">
+    <h2>Get In Touch</h2>
+    <form id="contactForm">
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+      <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER SECTION: Visible on all pages -->
+  <footer class="footer">
+    <p>&copy; 2025 Edu Meeting. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JAVASCRIPT FOR VALIDATION -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      const name = document.getElementById("name").value;
+      const regex = /^[A-Za-z]{3,6}$/;
+
+      if (!regex.test(name)) {
+        alert("Name must be 3-6 alphabetic characters only!");
+        e.preventDefault(); // prevent form submission
+      }
+    });
+  </script>
+</body>
+</html>

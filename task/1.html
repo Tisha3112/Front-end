@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edu Meeting</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        color: #fff;
+        background-color: #1e1e1e;
+      }
+      .top-bar {
+        background: #111;
+        padding: 10px;
+        text-align: center;
+        font-size: 14px;
+      }
+      .navbar {
+        background: #222;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+      }
+      .navbar .logo {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .navbar .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+      .navbar .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 15px;
+      }
+      .hero {
+        background: url("https://images.pexels.com/photos/4145190/pexels-photo-4145190.jpeg")
+          no-repeat center center/cover;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        padding-left: 80px;
+      }
+      .hero-text {
+        max-width: 500px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 30px;
+        border-radius: 10px;
+      }
+      .hero-text h4 {
+        font-size: 18px;
+        color: #ccc;
+        margin-bottom: 10px;
+      }
+      .hero-text h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+      }
+      .hero-text p {
+        font-size: 14px;
+        color: #ddd;
+        margin-bottom: 20px;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: red;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .features {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        background-color: #1e1e1e;
+        padding: 60px 40px;
+        flex-wrap: wrap;
+      }
+      .feature-box {
+        background-color: #b71c1c;
+        color: #fff;
+        padding: 30px 20px;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s;
+      }
+      .feature-box:hover {
+        transform: translateY(-5px);
+      }
+      .feature-box img {
+        width: 50px;
+        margin-bottom: 20px;
+      }
+      .feature-box h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .feature-box p {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .meetings-section {
+        padding: 60px 40px;
+        background-color: #1c1c1c;
+      }
+      .meetings-section h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 40px;
+      }
+      .meetings-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      .meeting-sidebar {
+        flex: 1;
+        min-width: 260px;
+        background: #fff;
+        color: #222;
+        padding: 20px;
+        border-radius: 10px;
+        height: fit-content;
+      }
+      .meeting-sidebar h3 {
+        margin-bottom: 15px;
+      }
+      .meeting-sidebar ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 20px;
+      }
+      .meeting-sidebar ul li {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      .btn-red {
+        display: inline-block;
+        background: #e53935;
+        color: white;
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .meeting-cards {
+        flex: 3;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: #fff;
+        color: #222;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .card .price {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #f44336;
+        color: white;
+        padding: 5px 10px;
+        font-size: 13px;
+        font-weight: bold;
+        border-radius: 5px;
+        z-index: 2;
+      }
+      .card img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .card-info {
+        padding: 15px;
+      }
+      .card-info .date {
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
+      }
+      .card-info h4 {
+        font-size: 18px;
+        margin: 10px 0 5px;
+      }
+      .card-info p {
+        font-size: 14px;
+        color: #777;
+      }
+
+      .apply-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 60px 40px;
+        background-color: #292929;
+      }
+      .apply-box,
+      .info-box {
+        background-color: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 30px 25px;
+        flex: 1;
+        min-width: 280px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      .apply-box h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      .apply-box p {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .btn-apply {
+        display: inline-block;
+        background: #e53935;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .info-box h3 {
+        font-size: 16px;
+        margin: 20px 0 5px;
+      }
+      .info-box p {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .courses-section {
+        background-color: #1c1c1c;
+        padding: 60px 40px;
+        text-align: center;
+      }
+      .courses-section h2 {
+        font-size: 28px;
+        color: #fff;
+        margin-bottom: 40px;
+      }
+      .courses-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .course-card {
+        background: #fff;
+        color: #222;
+        border-radius: 10px;
+        padding: 15px;
+        width: 260px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        text-align: left;
+      }
+      .course-card img {
+        width: 100%;
+        border-radius: 8px;
+      }
+      .course-card h4 {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+      .stars {
+        color: #fbc02d;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .price {
+        display: inline-block;
+        background: #f44336;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .facts-section {
+        background-color: #1c1c1c;
+        padding: 60px 40px;
+      }
+      .facts-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: center;
+      }
+      .facts-stats {
+        flex: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+      }
+      .fact-box {
+        background: #e53935;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        color: #fff;
+      }
+      .fact-box h2 {
+        font-size: 32px;
+        margin-bottom: 5px;
+      }
+      .fact-box p {
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .video-box {
+        flex: 1;
+        min-width: 280px;
+        background: url("https://images.pexels.com/photos/256401/pexels-photo-256401.jpeg")
+          center center/cover no-repeat;
+        border-radius: 10px;
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+      }
+      .video-overlay {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .video-overlay h3 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+      .play-button {
+        font-size: 24px;
+        background: #e53935;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+      .play-button:hover {
+        background: #c62828;
+      }
+      .contact-section {
+        background-color: #1e1e1e;
+        padding: 60px 40px;
+        color: white;
+      }
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      .contact-form,
+      .contact-info {
+        flex: 1;
+        min-width: 280px;
+        background-color: #292929;
+        padding: 30px;
+        border-radius: 10px;
+      }
+      .contact-form h2,
+      .contact-info h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+      }
+      .contact-form form input,
+      .contact-form form textarea {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      .contact-form form button {
+        background-color: #e53935;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .contact-form form button:hover {
+        background-color: #c62828;
+      }
+      .contact-info p {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+      .contact-info ul {
+        list-style: none;
+        padding: 0;
+      }
+      .contact-info ul li {
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #111;
+        text-align: center;
+        padding: 20px;
+        color: #aaa;
+        font-size: 14px;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header Bar -->
+    <div class="top-bar">
+      <p>This is an educational HTML CSS template by TemplateMo website.</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+      <div class="logo">EDU MEETING</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Meetings</a></li>
+        <li><a href="#">Apply Now</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="hero-text">
+        <h4>Hello Students</h4>
+        <h1>Welcome To Education</h1>
+        <p>
+          This is an edu meeting HTML CSS template provided by TemplateMo
+          website. The video background is taken from Pexels website.
+        </p>
+        <a href="#" class="btn">Join Us Now!</a>
+      </div>
+    </div>
+
+    <!-- Feature Boxes Section -->
+    <div class="features">
+      <div class="feature-box">
+        <img
+          src="https://img.icons8.com/ios-filled/50/ffffff/graduation-cap.png"
+          alt="Education Icon"
+        />
+        <h3>Best Education</h3>
+        <p>
+          Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis
+          convallis lorem at vulputate.
+        </p>
+      </div>
+      <div class="feature-box">
+        <img
+          src="https://img.icons8.com/ios-filled/50/ffffff/teacher.png"
+          alt="Teacher Icon"
+        />
+        <h3>Best Teachers</h3>
+        <p>
+          Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis
+          convallis lorem at vulputate.
+        </p>
+      </div>
+      <div class="feature-box">
+        <img
+          src="https://img.icons8.com/ios-filled/50/ffffff/student-male.png"
+          alt="Student Icon"
+        />
+        <h3>Best Students</h3>
+        <p>
+          Suspendisse tempor mauris a sem elementum bibendum. Praesent facilisis
+          convallis lorem at vulputate.
+        </p>
+      </div>
+    </div>
+
+    <!-- Upcoming Meetings Section -->
+    <div class="meetings-section">
+      <h2>Upcoming Meetings</h2>
+      <div class="meetings-container">
+        <!-- Left Sidebar -->
+        <div class="meeting-sidebar">
+          <h3>Meeting Categories</h3>
+          <ul>
+            <li>Sed tempus enim leo</li>
+            <li>Aenean molestie quis</li>
+            <li>Cras et metus vestibulum</li>
+            <li>Nam et condimentum</li>
+            <li>Praesent nec sapien</li>
+          </ul>
+          <a href="#" class="btn-red">All Upcoming Meetings</a>
+        </div>
+
+        <!-- Right Grid Cards -->
+        <div class="meeting-cards">
+          <div class="card">
+            <span class="price">$22.00</span>
+            <img src="https://via.placeholder.com/400x200" alt="Meeting 1" />
+            <div class="card-info">
+              <span class="date">NOV <strong>10</strong></span>
+              <h4>New Lecturers Meeting</h4>
+              <p>Morbi in libero blandit cursus ullamcorper.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="price">$36.00</span>
+            <img src="https://via.placeholder.com/400x200" alt="Meeting 2" />
+            <div class="card-info">
+              <span class="date">NOV <strong>24</strong></span>
+              <h4>Online Teaching Techniques</h4>
+              <p>Morbi in libero blandit cursus ullamcorper.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="price">$14.00</span>
+            <img src="https://via.placeholder.com/400x200" alt="Meeting 3" />
+            <div class="card-info">
+              <span class="date">NOV <strong>26</strong></span>
+              <h4>Higher Education Conference</h4>
+              <p>Morbi in libero blandit cursus ullamcorper.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="price">$48.00</span>
+            <img src="https://via.placeholder.com/400x200" alt="Meeting 4" />
+            <div class="card-info">
+              <span class="date">NOV <strong>30</strong></span>
+              <h4>Student Training Meetup</h4>
+              <p>Morbi in libero blandit cursus ullamcorper.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Apply Section -->
+    <div class="apply-section">
+      <div class="apply-box">
+        <h2>APPLY FOR BACHELOR DEGREE</h2>
+        <p>
+          You are allowed to use this edu meeting CSS template for your school
+          or university websites. You can feel free to modify or edit it.
+        </p>
+        <a href="#" class="btn-apply">JOIN US NOW!</a>
+      </div>
+
+      <div class="info-box">
+        <h3>About Edu Meeting HTML Template</h3>
+        <p>
+          If you want to get the latest collection of HTML CSS templates for
+          your websites, you may visit Too CSS website.
+        </p>
+
+        <h3>HTML CSS Bootstrap Layout</h3>
+        <p>Morbi in libero blandit lectus cursus ullamcorper.</p>
+
+        <h3>Please tell your friends</h3>
+        <p>Ut vehicula mauris nec ipsum pharetra tincidunt.</p>
+
+        <h3>Share this to your colleagues</h3>
+        <p>Maecenas suscipit sapien sit amet lorem luctus luctus.</p>
+      </div>
+    </div>
+
+    <!-- Popular Courses Section -->
+    <div class="courses-section">
+      <h2>Our Popular Courses</h2>
+      <div class="courses-container">
+        <div class="course-card">
+          <img src="https://via.placeholder.com/300x180" alt="Course 1" />
+          <h4>Please visit our website again</h4>
+          <div class="stars">★★★★★</div>
+          <span class="price">$350</span>
+        </div>
+
+        <div class="course-card">
+          <img src="https://via.placeholder.com/300x180" alt="Course 2" />
+          <h4>Responsive HTML Templates for you</h4>
+          <div class="stars">★★★★★</div>
+          <span class="price">$400</span>
+        </div>
+
+        <div class="course-card">
+          <img src="https://via.placeholder.com/300x180" alt="Course 3" />
+          <h4>Download free CSS Layouts for your business</h4>
+          <div class="stars">★★★★★</div>
+          <span class="price">$430</span>
+        </div>
+
+        <div class="course-card">
+          <img src="https://via.placeholder.com/300x180" alt="Course 4" />
+          <h4>Morbi in libero blandit lectus cursus</h4>
+          <div class="stars">★★★★★</div>
+          <span class="price">$480</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Facts Section -->
+    <div class="facts-section">
+      <div class="facts-container">
+        <!-- Left: Statistics -->
+        <div class="facts-stats">
+          <div class="fact-box">
+            <h2>94%</h2>
+            <p>Graduation Rate</p>
+          </div>
+          <div class="fact-box">
+            <h2>2345</h2>
+            <p>New Students</p>
+          </div>
+          <div class="fact-box">
+            <h2>126</h2>
+            <p>Current Teachers</p>
+          </div>
+          <div class="fact-box">
+            <h2>32</h2>
+            <p>Awards</p>
+          </div>
+        </div>
+
+        <!-- Right: Video Box -->
+        <div class="video-box">
+          <div class="video-overlay">
+            <h3>A Few Facts About Our University</h3>
+            <a href="#" class="play-button">▶</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+      <div class="contact-container">
+       
+        <div class="contact-form">
+          <h2>Let’s Get In Touch</h2>
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <input type="text" placeholder="Subject" required />
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">SEND MESSAGE NOW</button>
+          </form>
+        </div>
+
+        
+        <div class="contact-info">
+          <h2>More About Edu Meeting</h2>
+          <p>
+            This HTML CSS template is provided by TemplateMo for educational and
+            learning purposes. You can download, edit, and use it freely.
+          </p>
+          <ul>
+            <li><strong>Phone:</strong> 010-020-0340</li>
+            <li><strong>Email:</strong> info@edu-meeting.com</li>
+            <li><strong>Location:</strong> 123 Learning St, Education City</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="footer">
+      <p>Copyright © 2025 Edu Meeting Co., Ltd. All Rights Reserved.</p>
+    </div>
+  </body>
+</html>

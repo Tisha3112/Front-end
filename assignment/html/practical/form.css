@@ -1,0 +1,30 @@
+       label{
+            margin: right 10px;
+        }
+        td{
+            padding: 20px;
+        }
+        input{
+            padding: 7px;
+        }
+        table {
+            border: 2px solid#000;
+            background-color: rgb(219, 216, 216);
+        }
+
+        .submit{
+            background-color: #000;
+            border: none;
+            padding: 12px 45px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 2s;
+        }
+    .submit:hover{
+
+        background-color: cadetblue;
+        
+        }

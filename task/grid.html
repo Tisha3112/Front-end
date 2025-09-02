@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exact Grid Layout</title>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+        gap: 20px;
+      }
+      .item {
+        border: 3px solid;
+      }
+
+      #box4 {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+      #box5 {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+      }
+      #box6 {
+       grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+      }
+       #box7 {
+       grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 4;
+      }
+       
+      
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="item" id="box1">1</div>
+      <div class="item" id="box2">2</div>
+      <div class="item" id="box3">3</div>
+      <div class="item" id="box4">4</div>
+      <div class="item" id="box5">5</div>
+      <div class="item" id="box6">6</div>
+      <div class="item" id="box7">7</div>
+      <div class="item" id="box8">8</div>
+    </div>
+  </body>
+</html>
