@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Overlay */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+      }
+
+      .overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .overlay img {
+        max-width: 92vw;
+        max-height: 88vh;
+        object-fit: contain;
+        border: 12px solid #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 40px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <h2 class="text-center mb-4">PHOTO / GALLERY</h2>
+      <div class="row gallery">
+        <div class="col-md-4">
+          <img
+            src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-crocus-flower-spring-purple-saffron-png-image_9195136.png"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://images.pexels.com/photos/46216/sunflower-flowers-bright-yellow-46216.jpeg?_gl=1*1g7np5t*_ga*MjIxMjM1OTA3LjE3NTAxNjQxODA.*_ga_8JE65Q40S6*czE3NTY3OTkyMDIkbzEyJGcxJHQxNzU2Nzk5MjU0JGo4JGwwJGgw"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://tse3.mm.bing.net/th/id/OIP.AbsJJ-IJyIJosnQrG77wpgHaDu?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://tse3.mm.bing.net/th/id/OIP.Cipcgq60Lz-SLh3_RxLMcQHaE6?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://tse3.mm.bing.net/th/id/OIP.Oh44L6mBXeuubYglmsxndgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://png.pngtree.com/thumb_back/fh260/background/20241224/pngtree-blue-flower-garden-view-in-the-morning-image_16863253.jpg"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://th.bing.com/th/id/R.245e910b24962f2c618168b88301b30e?rik=pi41Mw3RsBQ49g&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fmogra-flower-png-water-935.jpg&ehk=Is1gMhiO9ACS7Qt2w4JPX1eU7lmrHn%2fQXh1hLBHFzUc%3d&risl=&pid=ImgRaw&r=0"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://tse2.mm.bing.net/th/id/OIP.s6x6moXtdUtdmoHjNcVUwgHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt=""
+          />
+        </div>
+        <div class="col-md-4">
+          <img
+            src="https://cdn.mos.cms.futurecdn.net/LNmih3ug6YZufqNSHh52mD.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay">
+      <span class="close-btn" id="closeBtn">&times;</span>
+      <img id="overlayImg" src="" alt="Zoomed Image" />
+    </div>
+
+    <script>
+      const images = document.querySelectorAll(".gallery img");
+      const overlay = document.getElementById("overlay");
+      const overlayImg = document.getElementById("overlayImg");
+      const closeBtn = document.getElementById("closeBtn");
+
+      images.forEach((img) => {
+        img.addEventListener("click", () => {
+          overlay.classList.add("active");
+          overlayImg.src = img.src;
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        overlay.classList.remove("active");
+      });
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>
