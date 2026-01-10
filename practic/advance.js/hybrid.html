@@ -20,15 +20,25 @@
             } 
 
         }
-        class C {
+        class C  extends B{
             Z(){
-                console.log("class A");
+                console.log("class c");
             }
         }
-        let Data = new B();
-        console.log(Data);
-        Data.X();
-        Data.Y();
+        class D extends B{
+            ab(){
+                console.log("hello")
+            }
+        }
+        let Data = new D();
+        user.X();
+        user.ab();
+        user.Y();
+
+        let user1=new C();
+        usw
+
+
       
     </script>
 </body>

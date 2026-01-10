@@ -1,0 +1,245 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-3">
+
+  <h3>Hotel Guest Registration</h3>
+  <div id="msg"></div>
+  <form id="guestForm" class="row g-2">
+    <div class="col-md-6"><input class="form-control" name="name" placeholder="Full Name"></div>
+    <div class="col-md-6"><input class="form-control" name="phone" placeholder="Phone (10 digits)"></div>
+    <div class="col-md-6"><input class="form-control" name="email" placeholder="Email"></div>
+    <div class="col-md-6"><input class="form-control" name="aadhar" placeholder="Aadhar (12 digits)"></div>
+    <div class="col-12"><textarea class="form-control" name="address" placeholder="Address"></textarea></div>
+    <div class="col-md-6"><input type="date" class="form-control" name="checkin"></div>
+    <div class="col-md-6"><input type="date" class="form-control" name="checkout"></div>
+    <div class="col-md-6"><input type="number" class="form-control" name="adults" placeholder="No. of Adults"></div>
+    <div class="col-12"><textarea class="form-control" name="purpose" placeholder="Purpose of Visit"></textarea></div>
+    <div class="col-12"><button class="btn btn-primary w-100">Submit</button></div>
+  </form>
+
+  <h4 class="mt-4">Submissions</h4>
+  <input id="search" class="form-control mb-2" placeholder="Search by name or date">
+  <table class="table table-bordered">
+    <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Checkin</th><th>Checkout</th><th>Action</th></tr></thead>
+    <tbody id="list"></tbody>
+  </table>
+
+<script>
+class CustomerFormHandler {
+  constructor(form, msgBox) {
+    this.form = form;
+    this.msgBox = msgBox;
+    this.KEY = "hotelData";
+    this.form.addEventListener("submit", e => this.handleSubmit(e));
+    this.form.addEventListener("input", e => this.validateForm()); // real-time
+  }
+  validateForm() {
+    const fd = Object.fromEntries(new FormData(this.form).entries());
+    if (!fd.name || fd.name.length < 3) return this.showMessage("Name ≥ 3 chars","danger"), false;
+    if (!/^\d{10}$/.test(fd.phone)) return this.showMessage("Phone must be 10 digits","danger"), false;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.email)) return this.showMessage("Invalid email","danger"), false;
+    if (!fd.address) return this.showMessage("Address required","danger"), false;
+    if (!/^\d{12}$/.test(fd.aadhar)) return this.showMessage("Aadhar must be 12 digits","danger"), false;
+    if (!fd.checkin || !fd.checkout || fd.checkin < new Date().toISOString().split("T")[0]) 
+      return this.showMessage("Checkin/Checkout must be future","danger"), false;
+    if (isNaN(fd.adults) || fd.adults <= 0) return this.showMessage("Adults must be number","danger"), false;
+    if (!fd.purpose) return this.showMessage("Purpose required","danger"), false;
+    this.showMessage("All fields valid ✔","success");
+    return true;
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    if (!this.validateForm()) return;
+    const fd = Object.fromEntries(new FormData(this.form).entries());
+    const arr = JSON.parse(localStorage.getItem(this.KEY) || "[]");
+    arr.push(fd);
+    localStorage.setItem(this.KEY, JSON.stringify(arr));
+    this.clearForm();
+    this.showMessage("Data saved successfully","success");
+    viewer.showData();
+  }
+  clearForm() { this.form.reset(); }
+  showMessage(msg,type) {
+    this.msgBox.innerHTML = `<div class="alert alert-${type} py-1">${msg}</div>`;
+    setTimeout(()=>this.msgBox.innerHTML="",3000);
+  }
+}
+
+class SubmissionViewer {
+  constructor(listEl, searchEl, key) {
+    this.listEl = listEl;
+    this.searchEl = searchEl;
+    this.KEY = key;
+    this.searchEl.addEventListener("input",()=>this.showData(this.searchEl.value));
+  }
+  showData(filter="") {
+    const data = JSON.parse(localStorage.getItem(this.KEY) || "[]");
+    let filtered = data.filter(d =>
+      d.name.toLowerCase().includes(filter.toLowerCase()) ||
+      d.checkin.includes(filter) || d.checkout.includes(filter)
+    );
+    this.listEl.innerHTML = "";
+    if (!filtered.length) {
+      this.listEl.innerHTML = `<tr><td colspan="6" class="text-center">No data found</td></tr>`;
+      return;
+    }
+    filtered.forEach((d,i)=>{
+      this.listEl.innerHTML += `<tr>
+        <td>${d.name}</td><td>${d.phone}</td><td>${d.email}</td>
+        <td>${d.checkin}</td><td>${d.checkout}</td>
+        <td><button class="btn btn-sm btn-danger" data-id="${i}">Delete</button></td>
+      </tr>`;
+    });
+    // event delegation for delete
+    this.listEl.onclick = e=>{
+      if(e.target.tagName==="BUTTON"){
+        let idx = e.target.dataset.id;
+        let arr = JSON.parse(localStorage.getItem(this.KEY) || "[]");
+        arr.splice(idx,1);
+        localStorage.setItem(this.KEY, JSON.stringify(arr));
+        this.showData(this.searchEl.value);
+      }
+    };
+  }
+}
+
+const formHandler = new CustomerFormHandler(
+  document.getElementById("guestForm"),
+  document.getElementById("msg")
+);
+const viewer = new SubmissionViewer(
+  document.getElementById("list"),
+  document.getElementById("search"),
+  formHandler.KEY
+);
+viewer.showData();
+</script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-3">
+
+  <h3>Hotel Guest Registration</h3>
+  <div id="msg"></div>
+  <form id="guestForm" class="row g-2">
+    <div class="col-md-6"><input class="form-control" name="name" placeholder="Full Name"></div>
+    <div class="col-md-6"><input class="form-control" name="phone" placeholder="Phone (10 digits)"></div>
+    <div class="col-md-6"><input class="form-control" name="email" placeholder="Email"></div>
+    <div class="col-md-6"><input class="form-control" name="aadhar" placeholder="Aadhar (12 digits)"></div>
+    <div class="col-md-6"><input type="date" class="form-control" name="checkin"></div>
+    <div class="col-md-6"><input type="date" class="form-control" name="checkout"></div>
+    <div class="col-md-6"><input type="number" class="form-control" name="adults" placeholder="No. of Adults"></div>
+    <div class="col-12"><textarea class="form-control" name="purpose" placeholder="Purpose of Visit"></textarea></div>
+    <div class="col-12"><button class="btn btn-primary w-100">Submit</button></div>
+  </form>
+
+  <h4 class="mt-4">Submissions</h4>
+  <input id="search" class="form-control mb-2" placeholder="Search by name or date">
+  <table class="table table-bordered">
+    <thead><tr><th>Name</th><th>Phone</th><th>Email</th><th>Checkin</th><th>Checkout</th><th>Action</th></tr></thead>
+    <tbody id="list"></tbody>
+  </table>
+
+<script>
+class CustomerFormHandler {
+  constructor(form, msgBox) {
+    this.form = form;
+    this.msgBox = msgBox;
+    this.KEY = "hotelData";
+    this.form.addEventListener("submit", e => this.handleSubmit(e));
+    this.form.addEventListener("input", e => this.validateForm()); // real-time
+  }
+  validateForm() {
+    const fd = Object.fromEntries(new FormData(this.form).entries());
+    if (!fd.name || fd.name.length < 3) return this.showMessage("Name ≥ 3 chars","danger"), false;
+    if (!/^\d{10}$/.test(fd.phone)) return this.showMessage("Phone must be 10 digits","danger"), false;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fd.email)) return this.showMessage("Invalid email","danger"), false;
+    if (!/^\d{12}$/.test(fd.aadhar)) return this.showMessage("Aadhar must be 12 digits","danger"), false;
+    if (!fd.checkin || !fd.checkout || fd.checkin < new Date().toISOString().split("T")[0]) 
+      return this.showMessage("Checkin/Checkout must be future","danger"), false;
+    if (isNaN(fd.adults) || fd.adults <= 0) return this.showMessage("Adults must be number","danger"), false;
+    if (!fd.purpose) return this.showMessage("Purpose required","danger"), false;
+    this.showMessage("All fields valid ✔","success");
+    return true;
+  }
+  handleSubmit(e) {
+    e.preventDefault();
+    if (!this.validateForm()) return;
+    const fd = Object.fromEntries(new FormData(this.form).entries());
+    const arr = JSON.parse(localStorage.getItem(this.KEY) || "[]");
+    arr.push(fd);
+    localStorage.setItem(this.KEY, JSON.stringify(arr));
+    this.clearForm();
+    this.showMessage("Data saved successfully","success");
+    viewer.showData();
+  }
+  clearForm() { this.form.reset(); }
+  showMessage(msg,type) {
+    this.msgBox.innerHTML = `<div class="alert alert-${type} py-1">${msg}</div>`;
+    setTimeout(()=>this.msgBox.innerHTML="",3000);
+  }
+}
+
+class SubmissionViewer {
+  constructor(listEl, searchEl, key) {
+    this.listEl = listEl;
+    this.searchEl = searchEl;
+    this.KEY = key;
+    this.searchEl.addEventListener("input",()=>this.showData(this.searchEl.value));
+  }
+  showData(filter="") {
+    const data = JSON.parse(localStorage.getItem(this.KEY) || "[]");
+    let filtered = data.filter(d =>
+      d.name.toLowerCase().includes(filter.toLowerCase()) ||
+      d.checkin.includes(filter) || d.checkout.includes(filter)
+    );
+    this.listEl.innerHTML = "";
+    if (!filtered.length) {
+      this.listEl.innerHTML = `<tr><td colspan="6" class="text-center">No data found</td></tr>`;
+      return;
+    }
+    filtered.forEach((d,i)=>{
+      this.listEl.innerHTML += `<tr>
+        <td>${d.name}</td><td>${d.phone}</td><td>${d.email}</td>
+        <td>${d.checkin}</td><td>${d.checkout}</td>
+        <td><button class="btn btn-sm btn-danger" data-id="${i}">Delete</button></td>
+      </tr>`;
+    });
+    this.listEl.onclick = e=>{
+      if(e.target.tagName==="BUTTON"){
+        let idx = e.target.dataset.id;
+        let arr = JSON.parse(localStorage.getItem(this.KEY) || "[]");
+        arr.splice(idx,1);
+        localStorage.setItem(this.KEY, JSON.stringify(arr));
+        this.showData(this.searchEl.value);
+      }
+    };
+  }
+}
+
+const formHandler = new CustomerFormHandler(
+  document.getElementById("guestForm"),
+  document.getElementById("msg")
+);
+const viewer = new SubmissionViewer(
+  document.getElementById("list"),
+  document.getElementById("search"),
+  formHandler.KEY
+);
+viewer.showData();
+</script>
+</body>
+</html>

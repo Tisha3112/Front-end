@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Logic Playground</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>JavaScript Logic Playground</h1>
+
+<!-- Operators & Conditions -->
+<section>
+  <h2>Number Checker</h2>
+  <input type="number" id="num">
+  <button onclick="checkNumber()">Check</button>
+  <p id="numResult"></p>
+</section>
+
+<!-- Loop -->
+<section>
+  <h2>Loop Output</h2>
+  <button onclick="printLoop()">Print 1–10</button>
+  <p id="loopResult"></p>
+</section>
+
+<!-- map / filter / reduce -->
+<section>
+  <h2>Array Methods</h2>
+  <button onclick="useMap()">Map</button>
+  <button onclick="useFilter()">Filter</button>
+  <button onclick="useReduce()">Reduce</button>
+  <p id="arrayResult"></p>
+</section>
+
+<!-- Calculator -->
+<section>
+  <h2>Calculator</h2>
+  <input type="number" id="a">
+  <input type="number" id="b">
+  <button onclick="add()">Add</button>
+  <button onclick="multiply()">Multiply</button>
+  <p id="calcResult"></p>
+</section>
+
+<!-- Timer -->
+<section>
+  <h2>Timer</h2>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="stopTimer()">Stop</button>
+  <p id="time">0</p>
+</section>
+
+<!-- localStorage -->
+<section>
+  <h2>localStorage Demo</h2>
+  <input type="text" id="username" placeholder="Enter name">
+  <button onclick="saveData()">Save</button>
+  <p id="storageResult"></p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
